@@ -26,7 +26,7 @@ node
     }
     stage('Nexus Publish') 
     {
-     nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\\Users\\Administrator\\.jenkins\\workspace\\HelloWorldDevOpsPipeline\\HelloWorldApp\\target\\HelloWorldApp-1.jar']], mavenCoordinate: [artifactId: 'HelloWorldDevOps', groupId: 'com', packaging: 'jar', version: '1']]]
+     nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\\Users\\Administrator\\.jenkins\\workspace\\HelloWorldDevOpsPipelineUsingJenkinsFile\\HelloWorldApp\\target\\HelloWorldApp-1.jar']], mavenCoordinate: [artifactId: 'HelloWorldApp', groupId: 'com', packaging: 'jar', version: '1']]]
 
     }
 }

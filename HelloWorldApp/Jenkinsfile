@@ -31,6 +31,6 @@ node
     }
     stage('Create Docker Image')
     {
-       app = docker.build("helloworld")
+       app = docker.build("HelloWorldApp/helloworld")
     }
 }

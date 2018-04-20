@@ -27,8 +27,7 @@ node
     }
     stage('Nexus Publish') 
     {
-     jarPath = currentDirectory + '\\target\\HelloWorldApp-1.jar' 
-       echo 'jarPath==>' + jarPath;
+     jarPath = currentDirectory + '\\target\\HelloWorldApp-1.jar'        
      nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: jarPath]], mavenCoordinate: [artifactId: 'HelloWorldApp', groupId: 'com', packaging: 'jar', version: '1']]]
     }
     stage('Build Image')

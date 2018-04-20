@@ -28,8 +28,8 @@ node
     stage('Nexus Publish') 
     {
      jarPath = currentDirectory + '\\target\\HelloWorldApp-1.jar' 
-       echo jarPath;
-     nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\\Users\\Administrator\\.jenkins\\workspace\\HelloWorldDevOpsPipelineUsingJenkinsFile\\HelloWorldApp\\target\\HelloWorldApp-1.jar']], mavenCoordinate: [artifactId: 'HelloWorldApp', groupId: 'com', packaging: 'jar', version: '1']]]
+       echo 'jarPath==>' + jarPath;
+     nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: jarPath]], mavenCoordinate: [artifactId: 'HelloWorldApp', groupId: 'com', packaging: 'jar', version: '1']]]
     }
     stage('Create Docker Image')
     {       

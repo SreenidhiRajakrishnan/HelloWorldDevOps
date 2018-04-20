@@ -33,6 +33,6 @@ node
     }
     stage('Create Docker Image')
     {       
-       sh 'docker build -t HelloWorldApp/helloworld .'
+       print "cmd /c java -version".execute().text
     }
 }

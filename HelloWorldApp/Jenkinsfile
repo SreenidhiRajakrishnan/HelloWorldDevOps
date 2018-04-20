@@ -1,0 +1,32 @@
+node 
+{
+   def mvnHome
+   def currentDirectory
+   stage('Git Clone') 
+    { 
+      echo 'Inside Git Clone';
+      git 'https://github.com/KeerthigaM/HelloWorldDevOps.git'
+      mvnHome = tool 'Maven3'
+    }
+    stage('Maven Build')
+    {
+       currentDirectory = pwd() + '\\HelloWorldApp'
+        dir(currentDirectory)
+        {
+             if (isUnix()) {
+                sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+             } else {
+                bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+             }
+        }
+    }
+    stage('Build Results') 
+    {
+      archive 'target/*.jar'
+    }
+    stage('Nexus Publish') 
+    {
+     nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\\Users\\Administrator\\.jenkins\\workspace\\HelloWorldDevOpsPipeline\\HelloWorldApp\\target\\HelloWorldApp-1.jar']], mavenCoordinate: [artifactId: 'HelloWorldDevOps', groupId: 'com', packaging: 'jar', version: '1']]]
+
+    }
+}

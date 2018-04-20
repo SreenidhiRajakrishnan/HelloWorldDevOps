@@ -1,5 +1,5 @@
 FROM a0bc4dee75e4
-WORKDIR /
+WORKDIR /target/
 ADD HelloWorldApp-1.jar HelloWorldApp-1.jar
 EXPOSE 8080
 CMD ["java", "-jar", "HelloWorldApp-1.jar"]

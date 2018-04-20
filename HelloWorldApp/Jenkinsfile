@@ -37,6 +37,9 @@ node
         {         
          bat 'docker build -t helloworld3 .'
          bat 'docker run helloworld3'
+         bat 'docker pull keerthiga/helloworlddevops'
+         bat 'docker tag helloworld3 keerthiga/helloworlddevops'
+         bat 'docker push keerthiga/helloworlddevops:latest'
         }
     }
 }

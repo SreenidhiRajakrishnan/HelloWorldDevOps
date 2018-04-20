@@ -2,6 +2,7 @@ node
 {
    def mvnHome
    def currentDirectory
+   def app
    stage('Git Clone') 
     { 
       echo 'Inside Git Clone';
@@ -27,6 +28,9 @@ node
     stage('Nexus Publish') 
     {
      nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\\Users\\Administrator\\.jenkins\\workspace\\HelloWorldDevOpsPipelineUsingJenkinsFile\\HelloWorldApp\\target\\HelloWorldApp-1.jar']], mavenCoordinate: [artifactId: 'HelloWorldApp', groupId: 'com', packaging: 'jar', version: '1']]]
-
+    }
+    stage('Create Docker Image')
+    {
+       app = docker.build("helloworld")
     }
 }

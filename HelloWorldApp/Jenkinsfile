@@ -31,8 +31,8 @@ node
        echo 'jarPath==>' + jarPath;
      nexusPublisher nexusInstanceId: 'localnexus', nexusRepositoryId: 'releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: jarPath]], mavenCoordinate: [artifactId: 'HelloWorldApp', groupId: 'com', packaging: 'jar', version: '1']]]
     }
-    stage('Create Docker Image')
-    {  
-       bat 'docker build -t helloworld .'
+    stage('Build Image')
+    {         
+       bat(/"${currentDirectory}" docker build -t helloworld ./)
     }
 }
